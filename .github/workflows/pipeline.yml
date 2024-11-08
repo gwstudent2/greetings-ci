@@ -36,6 +36,9 @@ jobs:
     - name: Build with Gradle Wrapper
       run: ./gradlew build
 
+    - name:  Version Artifact
+      run: mv build/libs/greetings-ci.jar greetings-ci-0.0.${{ github.run_number }}.jar
+
     - name: Upload Artifact
       uses: actions/upload-artifact@v4.3.0
       with:
@@ -65,8 +68,7 @@ jobs:
        shell: bash
        run: | 
          chmod +x ./test-script.sh
-         mv build/libs/greetings-ci.jar greetings-ci-${{ github.run_number }}
-         ./test-script.sh ${{ github.run_number }} ${{ github.event.inputs.myValues || github.run_number }}
+         ./test-script.sh 0.0.${{ github.run_number }} "1 2 3"
 
   
 
