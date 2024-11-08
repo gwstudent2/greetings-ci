@@ -66,7 +66,7 @@ jobs:
        run: | 
          chmod +x ./test-script.sh
          mv build/libs/greetings-ci.jar greetings-ci-${{ github.run_number }}
-         ./test-script.sh ${{ github.run_number }} ${{ github.event.inputs.myValues || "a b c" }}
+         ./test-script.sh ${{ github.run_number }} ${{ github.event.inputs.myValues || github.run_number }}
 
   
 
