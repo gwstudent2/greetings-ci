@@ -70,8 +70,7 @@ jobs:
        shell: bash
        run: | 
          chmod +x ./test-script.sh
-         ./test-script.sh 0.0.${{ github.run_number }} (${{ github.events.input.myVersion }} || "1 2 3")
-
+         ./test-script.sh 0.0.${{ github.run_number }} ${{ github.events.input.myVersion }} || "1 2 3"
   
 
     # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
