@@ -16,6 +16,7 @@ on:
     inputs:
       myTestArgs:
         description: 'Testing values'
+        required: false
   
 
 jobs:
