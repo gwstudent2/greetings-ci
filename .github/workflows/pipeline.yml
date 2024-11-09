@@ -118,7 +118,7 @@ jobs:
           generate_release_notes: true
           name: Production
           files: |
-            greetings-ci-0.0.${{ github.run_number }}.jar
+            build/libs/greetings-ci-0.0.${{ github.run_number }}.jar
 
 
   deploy-prod:
@@ -153,4 +153,4 @@ jobs:
           generate_release_notes: true
           name: Production
           files: |
-            greetings-ci-1.0.${{ github.run_number }}.jar
+            build/libs/greetings-ci-1.0.${{ github.run_number }}.jar
