@@ -25,15 +25,15 @@ on:
       body:
         description: 'Issue body'
         required: true
-        
+ 
+permissions:
+  issues: write        
 
 jobs:
  
   create_issue_on_failure:
     runs-on: ubuntu-latest 
   
-    permissions:
-      issues: write 
     steps:
       - name: Create issue using REST API
         run: |
