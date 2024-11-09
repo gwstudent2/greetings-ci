@@ -75,7 +75,7 @@ jobs:
        run: > 
          chmod +x ./test-script.sh &&
          ./test-script.sh 0.0.${{ github.run_number }} 
-         ${{ github.events.input.myTestArgs || '1 2 3' }}
+         ${{ github.events.inputs.myTestArgs || '1 2 3' }}
   
   create-issue-on-failure:
 
