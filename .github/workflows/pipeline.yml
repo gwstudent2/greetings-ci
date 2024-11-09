@@ -80,46 +80,20 @@ jobs:
          ./test-script.sh 0.0.${{ github.run_number }} 
          ${{ github.event.inputs.myTestArgs || '1 2 3' }}
   
-  # create-issue-on-failure:
+  create-issue-on-failure:
 
-  #  needs: test-run
+    needs: test-run
 
+    permissions:
+      issues: write
 
-  create_issue_on_failure:
-    runs-on: ubuntu-latest 
-  
-    steps:
-      - name: Create issue using REST API
-        run: |
-          curl --request POST \
-           --url https://api.github.com/repos/${{ github.repository }}/issues \
-           --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
-           --header 'content-type: application/json' \
-           --data '{
-             "title": "Failure: bad code",
-             "body": "Details: bad code"
-             }' \
-            --fail 
-
-   # if: always() && failure() 
-   # uses: ./.github/workflows/create-failure-issue.yml 
-   # with:
-   #   title: "Automated workflow failure issue for commit ${{ github.sha }}"
-   #   body: > 
-   #     "This issue was automatically created by the GitHub Action workflow 
-   #      ** ${{ github.workflow }} **"  
- 
-
-
-    # NOTE: The Gradle Wrapper is the default and recommended way to run Gradle (https://docs.gradle.org/current/userguide/gradle_wrapper.html).
-    # If your project does not have the Gradle Wrapper configured, you can use the following configuration to run Gradle with a specified version.
-    #
-    # - name: Setup Gradle
-    #   uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
-    #   with:
-    #     gradle-version: '8.9'
-    #
-    # - name: Build with Gradle 8.9
-    #   run: gradle build
+    if: always() && failure() 
+    uses: ./.github/workflows/create-failure-issue.yml 
+    secrets: inherit
+    with:
+      title: "Automated workflow failure issue for commit ${{ github.sha }}"
+      body: > 
+        "This issue was automatically created by the GitHub Action workflow 
+         ** ${{ github.workflow }} **"  
 
  
