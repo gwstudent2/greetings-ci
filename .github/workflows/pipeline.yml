@@ -16,13 +16,16 @@ on:
     inputs:
       myTestArgs:
         description: 'Testing values'
+
+permissions:
+      contents: read
+      issues: write        
     
 jobs:
   build: 
 
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
+
 
     steps:
     - uses: actions/checkout@v4
