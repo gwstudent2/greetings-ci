@@ -69,7 +69,10 @@ jobs:
        with:
          java-version: '17'
          distribution: 'temurin'
-        
+     - name: Print Inputs
+       shell: bash
+       run: echo github.events.inputs.myTestArgs = "${{ github.events.inputs.myTestArgs }}"
+  
      - name: Execute test
        shell: bash
        run: > 
