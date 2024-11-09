@@ -71,14 +71,14 @@ jobs:
          distribution: 'temurin'
      - name: Print Inputs
        shell: bash
-       run: echo github.events.inputs.myTestArgs = "${{ github.events.inputs.myTestArgs }}"
+       run: echo github.event.inputs.myTestArgs = "${{ github.event.inputs.myTestArgs }}"
   
      - name: Execute test
        shell: bash
        run: > 
          chmod +x ./test-script.sh &&
          ./test-script.sh 0.0.${{ github.run_number }} 
-         ${{ github.events.inputs.myTestArgs || '1 2 3' }}
+         ${{ github.event.inputs.myTestArgs || '1 2 3' }}
   
   create-issue-on-failure:
 
